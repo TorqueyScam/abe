@@ -1,17 +1,11 @@
-﻿using BepInEx;
+﻿#define DEBUG
+using BepInEx;
 using BepInEx.Configuration;
 using RoR2;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 namespace paddywan
 {
-    /// <summary>
-    /// Adjusts weighting of cards spawning depending on number of players
-    /// </summary>
     [BepInDependency("com.bepis.r2api")]
     [BepInPlugin("com.paddywan.TMFBalancedInteractables", "TMFBalancedInteractables", "1.0.0")]
     public class AdjustCardWeight : BaseUnityPlugin
@@ -91,11 +85,15 @@ namespace paddywan
 
         private void AddDebugLog(string message)
         {
+#if DEBUG
             Logger.Log(BepInEx.Logging.LogLevel.Debug, message);
+#endif
         }
         private void AddInfoLog(string message)
         {
+#if DEBUG
             Logger.Log(BepInEx.Logging.LogLevel.Info, message);
+#endif
         }
     }
 }
