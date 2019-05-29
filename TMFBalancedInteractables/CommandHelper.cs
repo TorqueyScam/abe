@@ -6,6 +6,10 @@ using RoR2;
 
 namespace paddywan
 {
+    /// <summary>
+    /// Taken from https://github.com/TheRealElysium/R2Mods
+    /// Credit to whoever he took it from.
+    /// </summary>
     public class CommandHelper
     {
         public static void RegisterCommands(RoR2.Console self)

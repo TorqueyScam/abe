@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
+/// <summary>
+/// Taken from https://github.com/TheRealElysium/R2Mods
+/// Credit to whoever he took it from.
+/// </summary>
 public static class Reflection
 {
     private static readonly BindingFlags _defaultFlags

@@ -29,7 +29,7 @@ namespace paddywan
             On.RoR2.DirectorCardCategorySelection.SumAllWeightsInCategory += (orig, self, category) =>
             {
                 var numberOfPlayers = RoR2.Run.instance.participatingPlayerCount;
-                if (numberOfPlayers > 4)
+                if (numberOfPlayers > 4) //only make changes if > 4 players
                 {
                     AddInfoLog($"Making changes based on {numberOfPlayers} players");
                     var cardsToBeAdjusted = new List<string>
@@ -66,7 +66,9 @@ namespace paddywan
             {
                 if(card.spawnCard.name == cardName)
                 {
+                    //Scale down the spawnrate as the player# increases. 4 = default, 8 = 50%, 16=25%.
                     var adjustmentConstant = (double)4 / (double)numberOfPlayers;
+                    //Then scale again based on config scalar. Config scalar will result in different "true" spawnrates depending on # of players. 2.0 value with 8 players results in 100%; but only 50% with 16.
                     var adjustedWeight = (int)((double)card.selectionWeight * confScalar.Value * (double)adjustmentConstant);
 
                     if (adjustedWeight < 1)
