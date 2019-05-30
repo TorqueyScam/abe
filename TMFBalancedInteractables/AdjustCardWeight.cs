@@ -1,5 +1,4 @@
-﻿#define DEBUG
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Configuration;
 using RoR2;
 using System.Collections.Generic;
