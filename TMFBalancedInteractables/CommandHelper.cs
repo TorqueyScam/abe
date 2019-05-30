@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using RoR2;
 
-namespace paddywan
+namespace Paddywan
 {
     /// <summary>
     /// Taken from https://github.com/TheRealElysium/R2Mods

@@ -4,10 +4,13 @@ using BepInEx.Configuration;
 using RoR2;
 using System.Collections.Generic;
 
-namespace paddywan
+namespace Paddywan
 {
+    /// <summary>
+    /// Credits to Fluffatron for getting an effective hook working.
+    /// </summary>
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.paddywan.TMFBalancedInteractables", "TMFBalancedInteractables", "1.0.0")]
+    [BepInPlugin("com.Paddywan.TMFBalancedInteractables", "TMFBalancedInteractables", "1.0.0")]
     public class AdjustCardWeight : BaseUnityPlugin
     {
         private static ConfigWrapper<double> confScalar;
@@ -84,7 +87,6 @@ namespace paddywan
                 }
             }            
         }
-
         private void AddDebugLog(string message)
         {
 #if DEBUG

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace paddywan
+namespace Paddywan
 {
     public static class CardNames
     {
