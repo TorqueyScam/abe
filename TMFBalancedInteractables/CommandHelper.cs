@@ -7,8 +7,8 @@ using RoR2;
 namespace Paddywan
 {
     /// <summary>
-    /// Taken from https://github.com/TheRealElysium/R2Mods
-    /// Credit to whoever he took it from.
+    /// Credit to Wildbook.
+    /// https://github.com/wildbook/R2Mods
     /// </summary>
     public class CommandHelper
     {

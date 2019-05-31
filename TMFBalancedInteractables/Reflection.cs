@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Reflection;
 
 /// <summary>
-/// Taken from https://github.com/TheRealElysium/R2Mods
-/// Credit to whoever he took it from.
+/// Credit to Wildbook.
+/// https://github.com/wildbook/R2Mods
 /// </summary>
 public static class Reflection
 {
