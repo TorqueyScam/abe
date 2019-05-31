@@ -1,19 +1,20 @@
-﻿using BepInEx;
+﻿#define DEBUG
+using BepInEx;
 using BepInEx.Configuration;
 using RoR2;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Paddywan
 {
     /// <summary>
-    /// Credits to Fluffatron for getting an effective hook working.
+    /// Modifies cardWeight of specific interactables to balance gameplay when using TMF.
     /// </summary>
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.Paddywan.TMFBalancedInteractables", "TMFBalancedInteractables", "1.0.0")]
+    [BepInPlugin("com.Paddywan.TMFBalancedInteractables", "TMFBalancedInteractables", "1.0.1")]
     public class AdjustCardWeight : BaseUnityPlugin
     {
         private static ConfigWrapper<double> confScalar;
-
         public void Awake()
         {            
             On.RoR2.Console.Awake += (orig, self) =>
@@ -28,6 +29,7 @@ namespace Paddywan
                 1.0
                 );
 
+            /// Credits to Fluffatron for getting an effective hook working.
             On.RoR2.DirectorCardCategorySelection.SumAllWeightsInCategory += (orig, self, category) =>
             {
                 var numberOfPlayers = RoR2.Run.instance.participatingPlayerCount;
@@ -62,6 +64,29 @@ namespace Paddywan
             };
         }
 
+        /// <summary>
+        /// Privdes a console command to change the printerScalar ingame. Effect from next maps.
+        /// </summary>
+        /// <param name="args">args[0] double</param>
+        [ConCommand(commandName = "printerScalar", flags = ConVarFlags.ExecuteOnServer, helpText = "args[0] double")]
+        private static void CCPrinterScalar(ConCommandArgs args)
+        {
+            string val = getArg(args.userArgs, 0);
+            double dVal = confScalar.Value;
+            if (val.Length == 0) Debug.Log($"printerScalar = {confScalar.Value}");
+            else
+            { 
+                try
+                {
+                    double.TryParse(val, out dVal);
+                }
+                finally
+                {
+                    confScalar.Value = dVal;
+                    Debug.Log($"printerScalar = {confScalar.Value}");
+                }
+            }
+        }
         private void AdjustSelectionWeight(DirectorCardCategorySelection.Category category, string cardName, int numberOfPlayers)
         {
             foreach(var card in category.cards)
@@ -97,6 +122,15 @@ namespace Paddywan
 #if DEBUG
             Logger.Log(BepInEx.Logging.LogLevel.Info, message);
 #endif
+        }
+        public static string getArg(List<string> args, int index)
+        {
+            if (index < args.Count && index >= 0)
+            {
+                return args[index];
+            }
+
+            return "";
         }
     }
 }
