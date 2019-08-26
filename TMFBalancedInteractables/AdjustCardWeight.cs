@@ -38,9 +38,7 @@ namespace Paddywan
                     AddInfoLog($"Making changes based on {numberOfPlayers} players");
                     var cardsToBeAdjusted = new List<string>
                     {
-                        CardNames.Duplicator,
-                        CardNames.DuplicatorLarge,
-                        CardNames.DuplicatorMilitary,
+             
                         CardNames.LunarChest
                     };
                     foreach (var card in cardsToBeAdjusted)
